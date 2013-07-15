@@ -1,0 +1,30 @@
+# ~/.screenrc
+
+## set escape key
+escape ^Tt
+
+## disable visual bell
+vbell off
+
+## set hardstatus line format
+hardstatus alwayslastline "[%D %M %d %02c:%s @%H] %`%-w%{= kw}%n %t%{-}%+w"
+
+## disable startup message
+startup_message off
+
+## set autodetach
+autodetach on
+
+## number of line scroll
+defscrollback 10240
+
+## toggle char encoding UTF8/EUC
+bind U eval "encoding utf-8" "!!!echo 'export LANG=ja_JP.UTF-8'"
+bind E eval "encoding euc" "!!!echo 'export LANG=ja_JP.EUC-JP'"
+
+## ^T k kill window
+bind ^k kill
+
+## set text encode to UTF-8
+defutf8 on
+
