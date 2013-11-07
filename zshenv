@@ -103,3 +103,6 @@ else
     alias lv="${PAGER}"
 fi
 
+# pyenv
+export PYENV_ROOT=/usr/local/opt/pyenv
+
