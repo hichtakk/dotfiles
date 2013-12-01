@@ -13,7 +13,7 @@ export PERL_BADLANG=0
 
 
 # pythonbrew functions
-[ -f ${HOME}/.pythonbrew/etc/bashrc ] && source ${HOME}/.pythonbrew/etc/bashrc
+#[ -f ${HOME}/.pythonbrew/etc/bashrc ] && source ${HOME}/.pythonbrew/etc/bashrc
 
 
 # set keybind 'shift-tab' to reverse completion
@@ -27,8 +27,16 @@ function ssh_screen(){
     screen -t $short_hostname ssh "$@"
 }
 
+function ssh_tmux() {
+    eval long_hostname=\${$#}
+    ssh_cmd="/usr/bin/ssh $@"
+    short_hostname=`echo $long_hostname | cut -d. -f 1`
+    echo $short_hostname
+    tmux new-window -n $short_hostname $ssh_cmd
+}
+
 if [ x$TERM = xscreen ]; then
-    alias ssh=ssh_screen
+    alias ssh=ssh_tmux
 fi
 
 
