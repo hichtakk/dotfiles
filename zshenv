@@ -83,17 +83,18 @@ path=(
 case "${OSTYPE}" in
 darwin*)
     #PATH=$PATH:/usr/X11/bin
+    PATH=$PATH:/usr/local/opt/coreutils/libexec/gnubin
     alias ldd='otool -L'
 esac
 
 
 # Python Library load path setting
-typeset -xT PYTHONPATH python_path
-typeset -U python_path
-python_path=(
-    ./lib
-    #${HOME}/hg/sandbox/python(N-/)
-)
+#typeset -xT PYTHONPATH python_path
+#typeset -U python_path
+#python_path=(
+#    ./lib
+#    #${HOME}/hg/sandbox/python(N-/)
+#)
 
 
 # use lv instead of less
@@ -112,5 +113,5 @@ else
 fi
 
 # pyenv
-export PYENV_ROOT=/usr/local/opt/pyenv
+#export PYENV_ROOT=/usr/local/opt/pyenv
 

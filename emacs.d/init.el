@@ -1,5 +1,6 @@
 ; ~/.emacs.d/init.el
 
+; package
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
@@ -9,6 +10,7 @@
 (define-key global-map (kbd "C-h") 'delete-backward-char)
 ;; helm-recentf
 (define-key global-map (kbd "M-r") 'helm-recentf)
+(define-key global-map (kbd "M-x") 'helm-M-x)
 
 ; color-theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/elpa/color-theme-solarized-20130307.1350")
@@ -45,6 +47,9 @@
 (require 'popwin)
 (setq display-buffer-function 'popwin:display-buffer)
 (setq popwin:popup-window-position 'bottom)
+
+; dired
+;(setq dired-use-ls-dired t)
 
 ; direx
 (require 'direx)
