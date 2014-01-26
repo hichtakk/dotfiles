@@ -32,12 +32,13 @@ function ssh_tmux() {
     ssh_cmd="/usr/bin/ssh $@"
     short_hostname=`echo $long_hostname | cut -d. -f 1`
     echo $short_hostname
-    tmux new-window -n $short_hostname $ssh_cmd
+    #tmux new-window -n $short_hostname $ssh_cmd
+    tmux split-window $ssh_cmd
 }
 
-if [ x$TERM = xscreen ]; then
-    alias ssh=ssh_tmux
-fi
+#if [ x$TERM = xscreen ]; then
+#    alias ssh=ssh_tmux
+#fi
 
 
 # compinit
