@@ -2,11 +2,15 @@
 
 ## zsh
 ### zshenv
-ログインシェル・インタラクティブシェル・シェルスクリプトとしてzshが起動
-された場合に読み込まれる設定．
+.zshenv is sourced on all invocations of the shell (login, interactive, shell script)
 
 ### zshrc
-インタラクティブシェルとしてzshが起動された場合に読み込まれる設定
-順序はzshenvの後となる．
+.zshrc is sourced on invocation of the interactive shell. It is sourced after .zshenv.
 
-## screen
+## terminal multiplexer
+### tmux.conf
+Configuration file of tmux
+
+### screenrc
+Configuration file of screen
+
