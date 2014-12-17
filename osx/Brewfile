@@ -1,0 +1,11 @@
+# Brewfile
+
+update
+upgrade
+ 
+install brew-cask
+install zsh git ctags tmux openssl wget curl
+ 
+# install by cask
+cask install google-chrome
+ 
