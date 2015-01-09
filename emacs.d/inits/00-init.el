@@ -1,16 +1,16 @@
-;; don't show *scratch* message
-(setq initial-scratch-message "*scratch*")
+; inhibit startup screen
+(setq inhibit-startup-screen t)
 
 ; delete auto-save files when quit
 (setq delete-auto-save-files t)
 
-;;; Always insert a blank line at the end of buffer
+; always insert a blank line at the end of buffer
 (setq require-final-newline t)
 
-;;; Don't make new line at bottom
+; don't make new line at bottom
 (setq next-line-add-newlines nil)
 
-;;; Don't ring error bell
+; don't ring error bell
 (setq ring-bell-function 'ignore)
 
 ; use space with tab
@@ -25,19 +25,9 @@
 ; scroll step
 (setq scroll-step 1)
 
-; key bindings
-;; use C-h as backspace
-(define-key global-map (kbd "C-h") 'delete-backward-char)
-
-;;; Mode line customize
-;; display line number in modeline
-(line-number-mode t)
-;; display column number in modeline
-(column-number-mode t)
-;; display current directory
+; highlight matching pair
 (show-paren-mode t)
 (setq show-paren-style 'expression)
-;; show current function name in modeline
-(which-function-mode t)
-;; display file size
-(size-indication-mode t)
+
+; reload buffer automaticaly
+(global-auto-revert-mode t)
