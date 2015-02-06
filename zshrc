@@ -1,8 +1,4 @@
 ## Environment variable configuration
-#
-# LANG
-#
-#export LANG=ja_JP.UTF-8
 
 ## Default shell configuration
 #
@@ -12,7 +8,6 @@ autoload colors
 colors
 case ${UID} in
 0)
-  #PROMPT="%B%{${fg[red]}%}%/#%{${reset_color}%}%b "
   PROMPT="%{${fg[red]}%}%n%{${fg[blue]}%}@%m%{${reset_color}%}%# "
   PROMPT2="%B%{${fg[red]}%}%_#%{${reset_color}%}%b "
   SPROMPT="%B%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%}%b "
@@ -20,7 +15,6 @@ case ${UID} in
     PROMPT="[%{${fg[red]}%}%n@%{${fg[blue]}%}%m%{${reset_color}%}]%# "
   ;;
 *)
-  #PROMPT="%{${fg[red]}%}%/%%%{${reset_color}%} "
   PROMPT="%n@%m%# "
   RPROMPT="[%~]"
   PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
@@ -81,17 +75,15 @@ setopt share_history # share command history data
 
 ## Completion configuration
 #
-autoload -U compinit
-compinit
+fpath=(/usr/local/share/zsh-completions $fpath)
+autoload -Uz compinit
+compinit -u
 
 ## Alias configuration
 #
 # expand aliases before completing
 #
 setopt complete_aliases # aliased ls needs if file/dir completions work
-
-alias where="command -v"
-alias j="jobs -l"
 
 case "${OSTYPE}" in
 freebsd*|darwin*)

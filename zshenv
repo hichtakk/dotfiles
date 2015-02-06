@@ -11,34 +11,8 @@ export PERL_BADLANG=0
 #zstyle ':vcs_info:*' actionformats \
 #       '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}|%{%white}%K{red}%}%a%{%f%k%}]'
 
-
-# pythonbrew functions
-#[ -f ${HOME}/.pythonbrew/etc/bashrc ] && source ${HOME}/.pythonbrew/etc/bashrc
-
-
 # set keybind 'shift-tab' to reverse completion
 bindkey "\e[Z" reverse-menu-complete
-
-
-# ssh 
-function ssh_screen(){
-    eval long_hostname=\${$#}
-    short_hostname=`echo $long_hostname | cut -d. -f 1`
-    screen -t $short_hostname ssh "$@"
-}
-
-function ssh_tmux() {
-    eval long_hostname=\${$#}
-    ssh_cmd="/usr/bin/ssh $@"
-    short_hostname=`echo $long_hostname | cut -d. -f 1`
-    echo $short_hostname
-    #tmux new-window -n $short_hostname $ssh_cmd
-    tmux split-window $ssh_cmd
-}
-
-#if [ x$TERM = xscreen ]; then
-#    alias ssh=ssh_tmux
-#fi
 
 
 # compinit
@@ -88,16 +62,6 @@ darwin*)
     alias ldd='otool -L'
 esac
 
-
-# Python Library load path setting
-#typeset -xT PYTHONPATH python_path
-#typeset -U python_path
-#python_path=(
-#    ./lib
-#    #${HOME}/hg/sandbox/python(N-/)
-#)
-
-
 # use lv instead of less
 if type lv > /dev/null 2>&1; then
     export PAGER="lv"
@@ -114,8 +78,6 @@ else
 fi
 
 # pyenv
-#export PYENV_ROOT=/usr/local/opt/pyenv
-
 export PYENV_ROOT="$HOME/.pyenv"
 export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
