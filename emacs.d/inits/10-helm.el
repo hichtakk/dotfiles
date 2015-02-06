@@ -1,6 +1,8 @@
-(when (locate-library "helm")
-  (require 'helm-config)
-  (require 'helm-descbinds)
+(use-package helm
+  :config
+  (use-package helm-config)
+  (use-package helm-descbinds)
+  (use-package helm-gtags)
 
   (helm-descbinds-mode)
 

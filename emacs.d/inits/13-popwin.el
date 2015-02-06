@@ -1,5 +1,5 @@
-(when (locate-library "popwin")
-  (require 'popwin)
+(use-package popwin
+  :config
   (popwin-mode 1)
 
   (push '("*Help*" :width 80 :position right) popwin:special-display-config)
