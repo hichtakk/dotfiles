@@ -5,7 +5,7 @@
 (setq delete-auto-save-files t)
 
 ; always insert a blank line at the end of buffer
-(setq require-final-newline t)
+;(setq require-final-newline t)
 
 ; don't make new line at bottom
 (setq next-line-add-newlines nil)
@@ -19,7 +19,7 @@
 ; tab width
 (setq-default tab-width 4)
 
-; yes/no -> y/n
+; yes/no to y/n
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ; scroll step
@@ -31,3 +31,14 @@
 
 ; reload buffer automaticaly
 (global-auto-revert-mode t)
+
+; see http://qiita.com/catatsuy/items/f9fad90fa1352a4d3161
+;; create backup file in ~/.emacs.d/backup
+(setq make-backup-files t)
+(setq backup-directory-alist
+      (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/backup"))
+            backup-directory-alist))
+
+;; create auto-save file in ~/.emacs.d/backup
+(setq auto-save-file-name-transforms
+            `((".*" ,(expand-file-name "~/.emacs.d/backup/") t)))
