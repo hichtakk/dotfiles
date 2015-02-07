@@ -1,0 +1,7 @@
+# gnu global
+# ~/.globalrc
+
+# use pygments
+# see http://qiita.com/5t111111/items/c14ac68f762ce71a7760
+#     http://qiita.com/yoshizow/items/9cc0236ac0249e0638ff
+# % gtags --gtagslabel=pygments --debug
