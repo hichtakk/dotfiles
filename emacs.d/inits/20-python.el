@@ -12,7 +12,11 @@
   (setq tab-width 4)
   (add-hook 'python-mode-hook
             '(lambda ()
-               (local-set-key "\C-xp" 'jedi-direx:pop-to-buffer))
+               ; python mode keybinds
+               (local-set-key (kbd "C-x p") 'jedi-direx:pop-to-buffer)
+               ; enable helm-gtags
+               (helm-gtags-mode)
+               )
             )
   )
 
