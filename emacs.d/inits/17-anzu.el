@@ -1,4 +1,6 @@
+; anzu
+; see http://emacs-jp.github.io/packages/mode-line/anzu.html
 (use-package anzu
   :config
-  (setq global-anzu-mode t)
+  (global-anzu-mode t)
   )
