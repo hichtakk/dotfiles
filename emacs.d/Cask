@@ -17,6 +17,7 @@
 (depends-on "jedi")
 (depends-on "jedi-direx")
 (depends-on "magit")
+(depends-on "markdown-mode")
 (depends-on "open-junk-file")
 (depends-on "pallet")
 (depends-on "popwin")
