@@ -1,9 +1,6 @@
 ; inhibit startup screen
 (setq inhibit-startup-screen t)
 
-; delete auto-save files when quit
-(setq delete-auto-save-files t)
-
 ; always insert a blank line at the end of buffer
 ;(setq require-final-newline t)
 
@@ -32,12 +29,18 @@
 ; reload buffer automaticaly
 (global-auto-revert-mode t)
 
+; backup and auto-save
+; see http://dan-project.blog.so-net.ne.jp/2012-06-04
+
 ; see http://qiita.com/catatsuy/items/f9fad90fa1352a4d3161
 ;; create backup file in ~/.emacs.d/.backup
 (setq make-backup-files t)
 (setq backup-directory-alist
       (cons (cons "\\.*$" (expand-file-name "~/.emacs.d/.backup"))
             backup-directory-alist))
+
+;; delete auto-save files when quit
+(setq delete-auto-save-files t)
 
 ;; create auto-save file in ~/.emacs.d/.backup
 (setq auto-save-file-name-transforms
