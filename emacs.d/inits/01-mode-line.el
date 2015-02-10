@@ -1,4 +1,4 @@
-; Mode line customize
+; Mode line settings
 
 ;; show current function name in modeline
 (which-function-mode t)
