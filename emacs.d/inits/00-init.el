@@ -45,3 +45,25 @@
 ;; create auto-save file in ~/.emacs.d/.backup
 (setq auto-save-file-name-transforms
             `((".*" ,(expand-file-name "~/.emacs.d/.backup/") t)))
+
+; window system
+(when window-system
+  ;; transparency
+  (set-frame-parameter nil 'alpha 95)
+  ;; disable menu bar
+  (menu-bar-mode 0)
+  ;; disable tool bar
+  (tool-bar-mode 0)
+  ;; disable scroll bar
+  (toggle-scroll-bar 0)
+  ;; font
+  (when (eq system-type 'darwin)
+    ;; Ricty
+    (setq font-hight 120) ; 140, 160
+    (set-face-attribute 'default nil
+                        :family "Ricty"
+                        :height font-hight)
+    (set-fontset-font
+     nil 'japanese-jisx0208
+     (font-spec :family "Ricty")))
+  )
