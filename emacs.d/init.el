@@ -1,14 +1,13 @@
 ; ~/.emacs.d/init.el
+(setq debug-on-error t)
 
 ; load-path setting for cask
 (setq load-path
   (append
-   (list nil
-         "~/.cask" ; install from script
+   (list "~/.cask" ; install from script
          "/usr/local/share/emacs/site-lisp" ; install from homebrew
          )
-   load-path
-   ))
+   load-path))
 
 ; Package management tool
 ; see https://github.com/cask/cask
