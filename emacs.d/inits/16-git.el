@@ -12,4 +12,7 @@
 (use-package git-gutter
   :config
   (global-git-gutter-mode t)
+  (custom-set-variables
+   '(git-gutter:modified-sign "*"))
+  (set-face-foreground 'git-gutter:modified "#93A2CC")
   )
