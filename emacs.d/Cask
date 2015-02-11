@@ -25,6 +25,7 @@
 (depends-on "py-autopep8")
 (depends-on "python")
 (depends-on "python-environment")
+(depends-on "rainbow-delimiters")
 (depends-on "recentf-ext")
 (depends-on "use-package")
 (depends-on "virtualenvwrapper")
