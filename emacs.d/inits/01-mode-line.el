@@ -46,6 +46,8 @@
                                      (powerline-vc face1 'r)
                                      (funcall separator-right face1 nil)
                                      (powerline-raw "%4l" nil 'l)
+                                     (powerline-raw "/" nil 'l)
+                                     (powerline-raw (format "%s" (count-lines (point-max) (point-min))) nil 'l)
                                      (powerline-raw ":" nil 'l)
                                      (powerline-raw "%3c " nil 'r)
                                      (powerline-hud face2 face1))))
