@@ -6,6 +6,7 @@
 (depends-on "cask")
 (depends-on "direx")
 (depends-on "epc")
+(depends-on "erlang")
 (depends-on "exec-path-from-shell")
 (depends-on "expand-region")
 (depends-on "flycheck")
