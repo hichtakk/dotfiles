@@ -44,9 +44,8 @@
 ; to create virtualenv and install or update jediepcserver.
 ; M-x jedi:install-server RET
 (use-package jedi
-  :init
-  (setq jedi:environment-root virtualenv-name)
   :config
+  (setq jedi:environment-root virtualenv-name)
   (setq jedi:complete-on-dot t)
   (add-hook 'python-mode-hook 'jedi:setup)
   ; jedi-direx
@@ -69,8 +68,7 @@
 ; see ./12-flycheck.el
 ;     http://flake8.readthedocs.org
 (use-package flycheck
-  :init
-  (add-hook 'python-mode-hook 'flycheck-mode)
   :config
+  (add-hook 'python-mode-hook 'flycheck-mode)
   (setq flycheck-flake8-maximum-line-length 80)
   )
