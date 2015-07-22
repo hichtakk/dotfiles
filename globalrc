@@ -5,3 +5,43 @@
 # see http://qiita.com/5t111111/items/c14ac68f762ce71a7760
 #     http://qiita.com/yoshizow/items/9cc0236ac0249e0638ff
 # % gtags --gtagslabel=pygments --debug
+
+#
+# Plug-in parser to use Pygments.
+#
+pygments-parser|Pygments plug-in parser:\
+	:tc=common:\
+	:langmap=C#\:.cs:\
+	:langmap=C++\:.c++.cc.cp.cpp.cxx.h.h++.hh.hp.hpp.hxx.C.H:\
+	:langmap=C\:.c.h:\
+	:langmap=CoffeeScript\:.coffee:\
+	:langmap=Common-Lisp\:.cl.lisp.el:\
+	:langmap=Cython\:.pyx.pxd.pxi:\
+	:langmap=Erlang\:.erl.hrl.es.escript:\
+	:langmap=Go\:.go:\
+	:langmap=JavaScript\:.js:\
+	:langmap=Java\:.java:\
+	:langmap=Matlab\:.m:\
+	:langmap=Objective-C++\:.mm.hh:\
+	:langmap=Objective-C\:.m.h:\
+	:langmap=PHP\:.php.php3.phtml:\
+	:langmap=Perl\:.pl.pm:\
+	:langmap=Python\:.py.pyw.sc.tac.sage:\
+	:langmap=Ruby\:.rb.rbw.rake.gemspec.rbx.duby:\
+	:gtags_parser=C#\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=C++\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=C\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=CoffeeScript\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Common-Lisp\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Cython\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Erlang\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Go\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=JavaScript\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Java\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Matlab\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Objective-C++\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Objective-C\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=PHP\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Perl\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Python\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:\
+	:gtags_parser=Ruby\:/usr/local/Cellar/global/6.3.4/lib/gtags/pygments-parser.la:
