@@ -1,0 +1,9 @@
+{
+    "Style": {
+        "Selected": ["bold", "underline", "green"]
+    },
+    "Keymap": {
+        "C-v": "peco.ScrollPageDown",
+        "M-v": "peco.ScrollPageUp"
+    }
+}
