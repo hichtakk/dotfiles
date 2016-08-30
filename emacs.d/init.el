@@ -14,11 +14,6 @@
 (require 'cask)
 (cask-initialize)
 
-; Cask file management tool
-; see https://github.com/rdallasgray/pallet
-(require 'pallet)
-(pallet-mode t)
-
 ; use-package
 ; see https://github.com/jwiegley/use-package
 ;     http://qiita.com/kai2nenobu/items/5dfae3767514584f5220
