@@ -61,9 +61,9 @@
     ;; Ricty
     (setq font-hight 120) ; 140, 160
     (set-face-attribute 'default nil
-                        :family "Ricty"
+                        :family "Ricty Diminished"
                         :height font-hight)
     (set-fontset-font
      nil 'japanese-jisx0208
-     (font-spec :family "Ricty")))
+     (font-spec :family "Ricty Diminished")))
   )
