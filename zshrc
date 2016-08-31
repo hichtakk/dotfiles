@@ -39,26 +39,6 @@ bindkey -e # emacs like keybind
 bindkey "\e[Z" reverse-menu-complete # 'shift-tab' to reverse completion
 
 
-# history
-alias history-all="history -E 1"
-HISTFILE=~/.zsh_history
-HISTSIZE=100000     # number of records saved on memory
-SAVEHIST=100000     # number of records saved on file
-setopt extended_history  # add timestamp to history
-setopt hist_ignore_all_dups
-setopt hist_ignore_space
-setopt hist_reduce_blanks
-setopt hist_ignore_dups # ignore duplication command history list
-setopt share_history # share command history data
-autoload history-search-end
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey "^p" history-beginning-search-backward-end
-bindkey "^n" history-beginning-search-forward-end
-bindkey "\\ep" history-beginning-search-backward-end
-bindkey "\\en" history-beginning-search-forward-end
-
-
 # completion
 fpath=(/usr/local/share/zsh-completions $fpath)
 autoload -Uz compinit
@@ -99,71 +79,6 @@ path=(
     ${HOME}/.pyenv(N-/)
 )
 
-#source ~/.zshrc.antigen
-
-# peco
-function peco-history-selection() {
-    BUFFER=`history -rn 1 | awk '!a[$0]++' | peco`
-    CURSOR=$#BUFFER
-    zle reset-prompt
-}
-
-zle -N peco-history-selection
-bindkey '^R' peco-history-selection
-
-##
-#if (( ${+commands[peco]} )); then
-#  peco-go-to-dir () {
-#    local line
-#    local selected="$(
-#      {
-#        (
-#          autoload -Uz chpwd_recent_filehandler
-#          chpwd_recent_filehandler && for line in $reply; do
-#            if [[ -d "$line" ]]; then
-#              echo "$line"
-#            fi
-#          done
-#        )
-#        ghq list --full-path
-#        for line in *(-/) ${^cdpath}/*(N-/); do echo "$line"; done | sort -u
-#      } | peco --query "$LBUFFER"
-#    )"
-#    if [ -n "$selected" ]; then
-#      BUFFER="cd ${(q)selected}"
-#      zle accept-line
-#    fi
-#    zle clear-screen
-#  }
-#  zle -N peco-go-to-dir
-#  bindkey '^[g' peco-go-to-dir
-#fi
-
-_nyan() {
-    _arguments \
-        '(- *)'{-h,--help}'[show help]' \
-        '*: :__nyan_modes'
-}
-__nyan_modes() {
-  _values \
-    'mode' \
-    'neko[kawaii normal neko]' \
-    'usagi[kawaii usa-neko]' \
-    'kuma[kawaii kuma-neko]' \
-    'github[kawaii octcat]'
-}
-
-compdef _nyan nyan
-
-
-# vcs_info
-## see http://qiita.com/mollifier/items/8d5a627d773758dd8078
-autoload -Uz vcs_info
-zstyle ':vcs_info:*' formats \
-       '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}]'
-zstyle ':vcs_info:*' actionformats \
-       '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}|%{%white}%K{red}%}%a%{%f%k%}]'
-RPROMPT="%1(v|%F{green}%1v%f|)"
 
 # compinit
 #zstyle ':completion:*' format '%B%d%b'
@@ -212,3 +127,13 @@ esac
 # color
 autoload colors
 colors
+
+
+# load config
+function _load-inits() {
+    ZSHDIR=~/.zsh.d
+    for init in `ls $ZSHDIR`; do
+        source ${ZSHDIR}/$init
+    done
+}
+_load-inits
