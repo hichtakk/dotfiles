@@ -51,21 +51,6 @@ compinit -u
 setopt complete_aliases # aliased ls needs if file/dir completions work
 
 
-# Programming environments
-## Golang
-export GOPATH=${HOME}/.golang.d
-
-## Perl
-# for perl local warning
-export PERL_BADLANG=0
-
-## Python
-# pyenv
-export PYENV_ROOT="${HOME}/.pyenv"
-export PATH="${PYENV_ROOT}/bin:${PATH}"
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
-
 # path
 typeset -U path cdpath fpath manpath
 path=(
@@ -99,30 +84,6 @@ setopt no_beep
 setopt numeric_glob_sort
 setopt magic_equal_subst
 
-
-# aliases
-alias rm="rm -i"
-alias cp="cp -i"
-alias mv="mv -i"
-alias la="ls -la"
-alias lf="ls -F"
-alias lh="ls -lh"
-alias ll="ls -l"
-alias du="du -h"
-alias df="df -h"
-
-case "${OSTYPE}" in
-darwin*)
-    alias ldd='otool -L'
-    alias ls="ls -G -w"
-    ;;
-freebsd*)
-    alias ls="ls -G -w"
-    ;;
-linux*)
-    alias ls="ls --color"
-    ;;
-esac
 
 # color
 autoload colors
