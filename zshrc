@@ -8,7 +8,7 @@ export LC_ALL=en_US.UTF-8
 
 
 # set prompt
-PROMPT="%n@%m> "
+PROMPT="> "
 RPROMPT="[%~]"
 PROMPT2="%{${fg[red]}%}%_%%%{${reset_color}%} "
 SPROMPT="%{${fg[red]}%}%r is correct? [n,y,a,e]:%{${reset_color}%} "
@@ -42,9 +42,9 @@ bindkey "\e[Z" reverse-menu-complete # 'shift-tab' to reverse completion
 # history
 alias history-all="history -E 1"
 HISTFILE=~/.zsh_history
-HISTSIZE=100000
-SAVEHIST=100000
-setopt extended_history
+HISTSIZE=100000     # number of records saved on memory
+SAVEHIST=100000     # number of records saved on file
+setopt extended_history  # add timestamp to history
 setopt hist_ignore_all_dups
 setopt hist_ignore_space
 setopt hist_reduce_blanks
@@ -69,29 +69,6 @@ compinit -u
 # expand aliases before completing
 #
 setopt complete_aliases # aliased ls needs if file/dir completions work
-
-## terminal configuration
-#unset LSCOLORS
-#case "${TERM}" in
-#xterm)
-#    export TERM=xterm-color
-#    ;;
-#kterm)
-#    export TERM=kterm-color
-#    # set BackSpace control character
-#    stty erase
-#    ;;
-#cons25)
-#    unset LANG
-#    export LSCOLORS=ExFxCxdxBxegedabagacad
-#    export LS_COLORS='di=01;34:ln=01;35:so=01;32:ex=01;31:bd=46;34:cd=43;34:su=41;30:sg=46;30:tw=42;30:ow=43;30'
-#    zstyle ':completion:*' list-colors \
-#      'di=;34;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
-#    ;;
-#eterm-color)
-#    export TERM=xterm-color
-#    ;;
-#esac
 
 
 # Programming environments
@@ -162,3 +139,76 @@ bindkey '^R' peco-history-selection
 #  bindkey '^[g' peco-go-to-dir
 #fi
 
+_nyan() {
+    _arguments \
+        '(- *)'{-h,--help}'[show help]' \
+        '*: :__nyan_modes'
+}
+__nyan_modes() {
+  _values \
+    'mode' \
+    'neko[kawaii normal neko]' \
+    'usagi[kawaii usa-neko]' \
+    'kuma[kawaii kuma-neko]' \
+    'github[kawaii octcat]'
+}
+
+compdef _nyan nyan
+
+
+# vcs_info
+## see http://qiita.com/mollifier/items/8d5a627d773758dd8078
+autoload -Uz vcs_info
+zstyle ':vcs_info:*' formats \
+       '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}]'
+zstyle ':vcs_info:*' actionformats \
+       '(%{%F{white}%K{green}%}%s%{%f%k%})-[%{%F{white}%K{blue}%}%b%{%f%k%}|%{%white}%K{red}%}%a%{%f%k%}]'
+RPROMPT="%1(v|%F{green}%1v%f|)"
+
+# compinit
+#zstyle ':completion:*' format '%B%d%b'
+zstyle ':completion:*' group-name ''
+zstyle ':completion:*:default' menu select=2
+zstyle ':completion:*:default' list-colors ""
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Z} r:|[._-]=*'
+zstyle ':completion:*' completer \
+       _oldlist _complete _match _history _ignored _approximate _prefix
+zstyle ':completion:*' use-cache yes
+zstyle ':completion:*' verbose yes
+zstyle ':completion:sudo:*' environ PATH="$SUDO_PATH:$PATH"
+
+setopt complete_in_word
+setopt glob_complete
+setopt hist_expand
+setopt no_beep
+setopt numeric_glob_sort
+setopt magic_equal_subst
+
+
+# aliases
+alias rm="rm -i"
+alias cp="cp -i"
+alias mv="mv -i"
+alias la="ls -la"
+alias lf="ls -F"
+alias lh="ls -lh"
+alias ll="ls -l"
+alias du="du -h"
+alias df="df -h"
+
+case "${OSTYPE}" in
+darwin*)
+    alias ldd='otool -L'
+    alias ls="ls -G -w"
+    ;;
+freebsd*)
+    alias ls="ls -G -w"
+    ;;
+linux*)
+    alias ls="ls --color"
+    ;;
+esac
+
+# color
+autoload colors
+colors
