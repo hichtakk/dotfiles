@@ -1,4 +1,5 @@
 {
+    "Prompt": "[peco]>",
     "Style": {
         "Selected": ["bold", "underline", "green"]
     },
