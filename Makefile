@@ -24,4 +24,4 @@ clean: ## Remove symlink from home directory
 	@-$(foreach val, $(DOTFILES), rm -vrf $(HOME)/.$(val);)
 
 help: ## Makefile
-	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort 
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | sort
