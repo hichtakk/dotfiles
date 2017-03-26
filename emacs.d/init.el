@@ -1,18 +1,44 @@
 ; ~/.emacs.d/init.el
 (setq debug-on-error t)
 
-; load-path setting for cask
-(setq load-path
-  (append
-   (list "~/.cask" ; install from script
-         "/usr/local/share/emacs/site-lisp" ; install from homebrew
-         )
-   load-path))
-
 ; Package management tool
-; see https://github.com/cask/cask
-(require 'cask)
-(cask-initialize)
+; see https://
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(package-refresh-contents)
+
+(package-install 'anzu)
+(package-install 'bind-key)
+(package-install 'direx)
+(package-install 'epc)
+(package-install 'erlang)
+(package-install 'exec-path-from-shell)
+(package-install 'expand-region)
+(package-install 'flycheck)
+(package-install 'git-gutter)
+(package-install 'helm)
+(package-install 'helm-descbinds)
+(package-install 'helm-gtags)
+(package-install 'init-loader)
+(package-install 'jedi)
+(package-install 'jedi-direx)
+(package-install 'git)
+(package-install 'markdown-mode)
+(package-install 'open-junk-file)
+(package-install 'popwin)
+(package-install 'powerline)
+(package-install 'py-autopep8)
+(package-install 'python)
+(package-install 'python-environment)
+(package-install 'recentf-ext)
+(package-install 'use-package)
+(package-install 'virtualenvwrapper)
+(package-install 'yaml-mode)
+(package-install 'zenburn-theme)
+(package-install 'go-mode)
+(package-install 'go-autocomplete)
+
 
 ; use-package
 ; see https://github.com/jwiegley/use-package
