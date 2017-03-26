@@ -4,31 +4,7 @@
 # Requirements
 
 * Emacs 24.x or higher
-* Cask (https://github.com/cask/cask)
 
-# Cask
-http://cask.readthedocs.org
-Cask is package management tool for Emacs.
-
-## Installation
-### Manual installation
-
-```
-% curl -fsSL https://raw.githubusercontent.com/cask/cask/master/go | python
-```
-
-### Package managers
-
-```
-% brew install cask
-```
-
-## Install Emacs-lisp packages from Cask
-
-```
-% cd ~/.emacs.d
-% make install
-```
 
 # Python
 ## Install Jedi
