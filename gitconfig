@@ -17,5 +17,5 @@ editor = vim
 	required = true
 
 [ghq]
-    root = ~/.ghq
+    root = ~/src
     root = ~/.go/src
