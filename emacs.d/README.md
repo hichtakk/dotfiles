@@ -27,7 +27,7 @@ Cask is package management tool for Emacs.
 
 ```
 % cd ~/.emacs.d
-% cask install
+% make install
 ```
 
 # Python
