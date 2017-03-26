@@ -8,6 +8,7 @@ alias lh="ls -lh"
 alias ll="ls -l"
 alias du="du -h"
 alias df="df -h"
+alias ec="emacsclient"
 
 case "${OSTYPE}" in
 darwin*)
