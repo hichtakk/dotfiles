@@ -6,4 +6,4 @@ update:
 	@cask --verbose update
 
 clean:
-	@rm -rf .cask
+	@rm -rf elpa
