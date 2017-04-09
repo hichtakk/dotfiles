@@ -2,13 +2,13 @@
 (setq debug-on-error t)
 
 ; Package management tool
-; see https://
+; see http://wikemacs.org/wiki/Package.el
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 (package-refresh-contents)
 
-(package-install 'anzu)
+(package-install 'anzu)    ; minor mode which displays current and total matches information
 (package-install 'bind-key)
 (package-install 'direx)
 (package-install 'epc)
@@ -16,14 +16,16 @@
 (package-install 'exec-path-from-shell)
 (package-install 'expand-region)
 (package-install 'flycheck)
+(package-install 'git)
 (package-install 'git-gutter)
+(package-install 'go-mode)
+(package-install 'go-autocomplete)
 (package-install 'helm)
 (package-install 'helm-descbinds)
 (package-install 'helm-gtags)
 (package-install 'init-loader)
 (package-install 'jedi)
 (package-install 'jedi-direx)
-(package-install 'git)
 (package-install 'markdown-mode)
 (package-install 'open-junk-file)
 (package-install 'popwin)
@@ -36,8 +38,6 @@
 (package-install 'virtualenvwrapper)
 (package-install 'yaml-mode)
 (package-install 'zenburn-theme)
-(package-install 'go-mode)
-(package-install 'go-autocomplete)
 
 
 ; use-package

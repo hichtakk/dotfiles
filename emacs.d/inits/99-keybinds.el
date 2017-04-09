@@ -1,7 +1,8 @@
 ; key bindings
 
 ;; use C-h as backspace
-(keyboard-translate ?\C-h ?\C-?)
+;(keyboard-translate ?\C-h ?\C-?)
+(global-set-key (kbd "C-h") 'delete-backward-char)
 
 ;; describe mode
 (define-key global-map (kbd "M-?") 'describe-mode)
