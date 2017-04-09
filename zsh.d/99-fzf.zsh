@@ -175,6 +175,17 @@ zle -N exec-oneliner
 bindkey '^x^x' exec-oneliner
 
 
+fghq() {
+  local selected
+  selected="$(ghq list --full-path | fzf --prompt='[fghq]> ')"
+  if [ -n "$selected" ]; then
+    BUFFER="builtin cd $selected"
+  fi
+  zle reset-prompt
+}
+zle -N fghq
+
+
 # Default Options
 _gen_fzf_default_opts() {
   local base03="234"
