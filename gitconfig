@@ -9,13 +9,13 @@ ui = auto
 editor = vim
 
 [push]
-	default = simple
+default = simple
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+clean = git-lfs clean %f
+smudge = git-lfs smudge %f
+required = true
 
 [ghq]
-    root = ~/src
-    root = ~/.go/src
+root = ~/src
+root = ~/.go/src
