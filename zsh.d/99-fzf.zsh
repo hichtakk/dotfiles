@@ -175,11 +175,12 @@ zle -N exec-oneliner
 bindkey '^x^x' exec-oneliner
 
 
-fghq() {
+fzf-ghq-look-from-list() {
   local selected
-  selected="$(ghq list --full-path | fzf --prompt='[fghq]> ')"
+  selected="$(ghq list | fzf --prompt='[fzf-ghq-look]> ')"
   if [ -n "$selected" ]; then
-    BUFFER="builtin cd $selected"
+    BUFFER="ghq look $selected"
+    CURSOR=$#BUFFER
   fi
   zle reset-prompt
 }
