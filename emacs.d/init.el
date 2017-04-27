@@ -1,7 +1,4 @@
-; ~/.emacs.d/init.el
-(setq debug-on-error t)
-
-; Package management tool
+; package.el
 ; see http://wikemacs.org/wiki/Package.el
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
@@ -46,6 +43,7 @@
 ;     http://qiita.com/kai2nenobu/items/5dfae3767514584f5220
 (unless (require 'use-package nil t)
   (defmacro use-package (&rest args)))
+
 
 ; init-loader
 ; see https://github.com/emacs-jp/init-loader
