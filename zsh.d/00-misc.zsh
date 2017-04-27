@@ -1,5 +1,3 @@
 # color
 autoload colors
 colors
-
-
