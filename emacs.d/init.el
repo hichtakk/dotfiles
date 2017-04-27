@@ -6,7 +6,7 @@
 (require 'package)
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-(package-refresh-contents)
+;(package-refresh-contents)
 
 (package-install 'anzu)    ; minor mode which displays current and total matches information
 (package-install 'bind-key)
@@ -34,6 +34,7 @@
 (package-install 'python)
 (package-install 'python-environment)
 (package-install 'recentf-ext)
+(package-install 'rust-mode)
 (package-install 'use-package)
 (package-install 'virtualenvwrapper)
 (package-install 'yaml-mode)

@@ -1,3 +1,4 @@
+DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
 install:
 	@cask --verbose install
@@ -5,5 +6,7 @@ install:
 update:
 	@cask --verbose update
 
-clean:
-	@rm -rf elpa
+clean: ## Remove elpa directory
+	@echo '==> Remove emacs package directory'
+	@echo ''
+	rm -rf $(DOTPATH)/elpa
