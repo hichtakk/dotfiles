@@ -5,6 +5,11 @@ email = hichtakk@gmail.com
 [color]
 ui = auto
 
+[color "status"]
+added = blue
+changed = yellow
+untracked = red
+
 [core]
 editor = vim
 
