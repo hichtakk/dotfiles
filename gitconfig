@@ -1,6 +1,5 @@
 [user]
-name = Hirotaka Ichikawa
-email = hichtakk@gmail.com
+useConfigOnly = true
 
 [color]
 ui = auto
