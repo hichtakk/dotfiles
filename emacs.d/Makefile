@@ -1,12 +1,9 @@
-DOTPATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+DOT_EMACS_PATH := $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
 
-install:
-	@cask --verbose install
-
-update:
-	@cask --verbose update
+install: ## install emacs packages
+	@emacs -batch -l init.el
 
 clean: ## Remove elpa directory
 	@echo '==> Remove emacs package directory'
 	@echo ''
-	rm -rf $(DOTPATH)/elpa
+	rm -rf $(DOT_EMACS_PATH)/.elpa

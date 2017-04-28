@@ -4,7 +4,7 @@
 (setq package-user-dir "~/.emacs.d/.elpa/")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
-;(package-refresh-contents)
+(when noninteractive (package-refresh-contents))
 
 (package-install 'anzu)    ; minor mode which displays current and total matches information
 (package-install 'bind-key)
