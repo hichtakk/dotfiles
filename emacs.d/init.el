@@ -1,6 +1,7 @@
 ; package.el
 ; see http://wikemacs.org/wiki/Package.el
 (require 'package)
+(setq package-user-dir "~/.emacs.d/.elpa/")
 (add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
 (package-initialize)
 ;(package-refresh-contents)
