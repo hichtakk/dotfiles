@@ -46,6 +46,9 @@
 (setq auto-save-file-name-transforms
             `((".*" ,(expand-file-name "~/.emacs.d/.backup/") t)))
 
+;; custom variables set by package.el
+(setq custom-file (locate-user-emacs-file "~/.emacs.d/.custom.el"))
+
 ; window system
 (when window-system
   ;; transparency
