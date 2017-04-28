@@ -1,8 +1,8 @@
 ; key bindings
 
 ;; use C-h as backspace
-;(keyboard-translate ?\C-h ?\C-?)
-(global-set-key (kbd "C-h") 'delete-backward-char)
+; see https://www.emacswiki.org/emacs/BackspaceKey
+(define-key key-translation-map [?\C-h] [?\C-?])
 
 ;; describe mode
 (define-key global-map (kbd "M-?") 'describe-mode)
