@@ -1,16 +1,25 @@
 # dotfiles
 
-## zsh
-### zshenv
-.zshenv is sourced on all invocations of the shell (login, interactive, shell script)
+# dotfiles deployed on user's home directory
 
-### zshrc
-.zshrc is sourced on invocation of the interactive shell. It is sourced after .zshenv.
+```
+> make list
+```
 
-## terminal multiplexer
-### tmux.conf
-Configuration file of tmux
+# Install
 
-### screenrc
-Configuration file of screen
+```
+> make install
+```
 
+# Uninstall
+
+```
+> make clean
+```
+
+# Help
+
+```
+> make help
+```
