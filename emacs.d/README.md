@@ -5,19 +5,14 @@
 
 * Emacs 24.x or higher
 
-
-# Python
-## Install Jedi
-Auto completion for Python
+# Install packages
 
 ```
-M-x jedi:install-server
+> make install
 ```
 
-## Install pyflakes
-flycheck and autopep8
+# Delete packages
 
 ```
-% source ~/.emacs.d/.python-environments/default/bin/activate
-% pip install -r ~/.emacs.d/.python-environments/requirements.txt
+> make clean
 ```
