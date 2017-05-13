@@ -8,6 +8,7 @@
 
 (package-install 'anzu)    ; minor mode which displays current and total matches information
 (package-install 'bind-key)
+(package-install 'diminish)
 (package-install 'direx)
 (package-install 'epc)
 (package-install 'erlang)
@@ -25,6 +26,7 @@
 (package-install 'jedi)
 (package-install 'jedi-direx)
 (package-install 'markdown-mode)
+(package-install 'multi-term)
 (package-install 'open-junk-file)
 (package-install 'popwin)
 (package-install 'powerline)
@@ -33,6 +35,7 @@
 (package-install 'python-environment)
 (package-install 'recentf-ext)
 (package-install 'rust-mode)
+(package-install 'terraform-mode)
 (package-install 'use-package)
 (package-install 'virtualenvwrapper)
 (package-install 'yaml-mode)

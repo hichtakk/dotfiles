@@ -52,9 +52,9 @@
 ; window system
 (when window-system
   ;; transparency
-  (set-frame-parameter nil 'alpha 95)
+  ;(set-frame-parameter nil 'alpha 95)
   ;; disable menu bar
-  (menu-bar-mode 0)
+  ;(menu-bar-mode 0)
   ;; disable tool bar
   (tool-bar-mode 0)
   ;; disable scroll bar
