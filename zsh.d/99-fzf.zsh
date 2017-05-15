@@ -191,30 +191,46 @@ _gen_fzf_default_opts() {
   local green="64"
 
   # Solarized Dark color scheme for fzf
-  export FZF_DEFAULT_OPTS="
-    --select-1
-    --exit-0
+  FZF_DEFAULT_SEARCH_OPTS="
     --exact
-    --inline-info
-    --prompt='[fzf]> '
-    --color fg:-1,bg:-1,hl:$blue,fg+:$green,bg+:-1,hl+:$red
-    --color info:-1,prompt:-1,pointer:$green,marker:$base3,spinner:$yellow
+    --no-sort
+    --tac
+    "
+  FZF_DEFAULT_INTERFACE_OPTS="
     --bind=alt-v:page-up
     --bind=ctrl-v:page-down
     --bind=ctrl-z:toggle-all
     --bind=ctrl-k:kill-line
-    --reverse
-    --border
-    --no-sort
-    --tac
-    --ansi
-    --select-1
-    --exit-0
     --bind=\"ctrl-x:execute(LC_ALL=C sed -i '' '/{}/d' $HISTFILE)\"
     --bind=\"ctrl-s:execute({2..})\"
     --bind=\"ctrl-l:execute(vim hoge)\"
-  "
+    --cycle
+    "
     #--bind=\"ctrl-x:execute(LC_ALL=C sed -i '/{}/d' $HISTFILE)\"
+  FZF_DEFAULT_LAYOUT_OPTS="
+    --border
+    --inline-info
+    --prompt='[fzf]> '
+    --reverse
+    "
+  FZF_DEFAULT_DISPLAY_OPTS="
+    --ansi
+    --color fg:-1,bg:-1,hl:$blue,fg+:$green,bg+:-1,hl+:$red
+    --color info:-1,prompt:-1,pointer:$green,marker:$base3,spinner:$yellow
+    --exit-0
+    --select-1
+    "
+  FZF_DEFAULT_SCRIPTING_OPTS="
+    --exit-0
+    --select-1
+    "
+  export FZF_DEFAULT_OPTS="\
+    ${FZF_DEFAULT_SEARCH_OPTS} \
+    ${FZF_DEFAULT_INTERFACE_OPTS}  \
+    ${FZF_DEFAULT_LAYOUT_OPTS}  \
+    ${FZF_DEFAULT_DISPLAY_OPTS}  \
+    ${FZF_DEFAULT_SCRIPTING_OPTS}  \
+    "
 }
 _gen_fzf_default_opts
 
@@ -222,7 +238,7 @@ _gen_fzf_default_opts
 _fzf-my_functions() {
     if type "fzf" >/dev/null 2>&1; then
         eval $(grep -E '^function\s+.+\(.*\)' ${HOME}/.zsh.d/* | awk '{print $2}' | sed -e 's/(.*)//' | \
-                   fzf --prompt="[fzf-my-functions]> " --preview="type {}" --preview-window=up:10)
+                   fzf --prompt="[fzf-my-functions]> " --preview="type {}" --preview-window=up:2)
     else
         echo "Command fzf not found."
     fi
