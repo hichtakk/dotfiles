@@ -162,7 +162,7 @@ bindkey '^x^x' exec-oneliner
 
 function fzf-ghq-look-from-list() {
     local selected
-    selected="$(ghq list --full-path | fzf --prompt='[fzf-ghq-look]> ')"
+    selected="$(ghq list --full-path | fzf --prompt='[fzf-ghq-look]> ' --preview='cd {} && git log -1' --preview-window=up:6)"
     if [ -n "$selected" ]; then
         BUFFER="cd $selected"
         CURSOR=$#BUFFER
@@ -190,13 +190,12 @@ _gen_fzf_default_opts() {
   local cyan="37"
   local green="64"
 
-  # Solarized Dark color scheme for fzf
-  FZF_DEFAULT_SEARCH_OPTS="
+  local FZF_DEFAULT_SEARCH_OPTS="
     --exact
     --no-sort
     --tac
     "
-  FZF_DEFAULT_INTERFACE_OPTS="
+  local FZF_DEFAULT_INTERFACE_OPTS="
     --bind=alt-v:page-up
     --bind=ctrl-v:page-down
     --bind=ctrl-z:toggle-all
@@ -206,21 +205,20 @@ _gen_fzf_default_opts() {
     --bind=\"ctrl-l:execute(vim hoge)\"
     --cycle
     "
-    #--bind=\"ctrl-x:execute(LC_ALL=C sed -i '/{}/d' $HISTFILE)\"
-  FZF_DEFAULT_LAYOUT_OPTS="
+  local FZF_DEFAULT_LAYOUT_OPTS="
     --border
     --inline-info
     --prompt='[fzf]> '
     --reverse
     "
-  FZF_DEFAULT_DISPLAY_OPTS="
+  local FZF_DEFAULT_DISPLAY_OPTS="
     --ansi
     --color fg:-1,bg:-1,hl:$blue,fg+:$green,bg+:-1,hl+:$red
     --color info:-1,prompt:-1,pointer:$green,marker:$base3,spinner:$yellow
     --exit-0
     --select-1
     "
-  FZF_DEFAULT_SCRIPTING_OPTS="
+  local FZF_DEFAULT_SCRIPTING_OPTS="
     --exit-0
     --select-1
     "
