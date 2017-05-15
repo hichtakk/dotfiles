@@ -202,7 +202,6 @@ _gen_fzf_default_opts() {
     --bind=ctrl-k:kill-line
     --bind=\"ctrl-x:execute(LC_ALL=C sed -i '' '/{}/d' $HISTFILE)\"
     --bind=\"ctrl-s:execute({2..})\"
-    --bind=\"ctrl-l:execute(vim hoge)\"
     --cycle
     "
   local FZF_DEFAULT_LAYOUT_OPTS="
