@@ -1,4 +1,10 @@
-(use-package helm
+(use-package helm :disabled
+  :bind (("M-i" . helm-imenu)
+         ("M-r" . helm-recentf)
+         ("M-x" . helm-M-x)
+         ("C-x b" . helm-buffers-list)
+         ("C-x C-f" . helm-find-files)
+         )
   :config
   (use-package helm-config)
 

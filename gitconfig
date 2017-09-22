@@ -22,4 +22,4 @@ required = true
 
 [ghq]
 root = ~/src
-root = ~/.go/src
+root = ~/.golang.d

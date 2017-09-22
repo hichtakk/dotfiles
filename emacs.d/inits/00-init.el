@@ -49,6 +49,9 @@
 ;; custom variables set by package.el
 (setq custom-file (locate-user-emacs-file "~/.emacs.d/.custom.el"))
 
+;;
+(set-default 'truncate-lines nil)
+
 ; window system
 (when window-system
   ;; transparency
