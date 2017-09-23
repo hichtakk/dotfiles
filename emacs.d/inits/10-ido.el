@@ -42,4 +42,7 @@
     :config
     (smex-initialize)
     )
+  
+  (use-package ido-describe-bindings
+    :bind (("C-x ?" . ido-describe-bindings))
   )
