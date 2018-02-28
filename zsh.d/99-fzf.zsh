@@ -162,7 +162,7 @@ bindkey '^x^x' exec-oneliner
 
 function fzf-ghq-look-from-list() {
     local selected
-    selected="$(ghq list --full-path | fzf --prompt='[fzf-ghq-look]> ' --preview='cd {} && git log -1' --preview-window=up:6)"
+    selected="$(ghq list --full-path | sed 's/ /\\ /g' | fzf --prompt='[fzf-ghq-look]> ' --preview='cd {} && git log -1' --preview-window=up:6)"
     if [ -n "$selected" ]; then
         BUFFER="cd $selected"
         CURSOR=$#BUFFER
