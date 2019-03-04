@@ -1,21 +1,25 @@
 [user]
-name = Hirotaka Ichikawa
-email = hichtakk@gmail.com
+useConfigOnly = true
 
 [color]
 ui = auto
+
+[color "status"]
+added = blue
+changed = yellow
+untracked = red
 
 [core]
 editor = vim
 
 [push]
-	default = simple
+default = simple
 
 [filter "lfs"]
-	clean = git-lfs clean %f
-	smudge = git-lfs smudge %f
-	required = true
+clean = git-lfs clean %f
+smudge = git-lfs smudge %f
+required = true
 
 [ghq]
-    root = ~/.ghq
-    root = ~/.go/src
+root = ~/src
+root = ~/.golang.d

@@ -4,11 +4,14 @@
 # ===============
 
 # fh - repeat history
-fh() {
-  print -z $( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac | sed 's/ *[0-9]* *//')
+function fzf-history() {
+  title='fzf-history'
+  BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --prompt="[${title}]> " | sed 's/ *[0-9]* *//')
+  CURSOR=$#BUFFER
+  zle reset-prompt
 }
-zle -N fh
-bindkey '^R' fh
+zle -N fzf-history
+bindkey '^R' fzf-history
 
 
 # =========
@@ -16,7 +19,7 @@ bindkey '^R' fh
 # =========
 
 # fkill - kill process
-fkill() {
+function fzf-kill() {
   local pid
   pid=$(ps -ef | sed 1d | fzf -m | awk '{print $2}')
 
@@ -48,7 +51,7 @@ fbr() {
 }
 
 # fco - checkout git branch/tag
-fco() {
+function fzf-git-checkout() {
   local tags branches target
   tags=$(
     git tag | awk '{print "\x1b[31;1mtag\x1b[m\t" $1}') || return
@@ -63,7 +66,7 @@ fco() {
 }
 
 # fshow - git commit browser
-fshow() {
+function fzf-git-commit-browse() {
   git log --graph --color=always \
         --format="%C(auto)%h%d %s %C(black)%C(bold)%cr" "$@" |
           fzf --ansi --no-sort --reverse --tiebreak=index --bind=ctrl-s:toggle-sort \
@@ -75,21 +78,10 @@ FZF-EOF"
 }
 
 
-function _my_func() {
-    if type "fzf" >/dev/null 2>&1; then
-        eval $( functions | grep -E '^\S+' | grep -v '\}' | grep -vE '^_'| awk '{print $1}' | fzf --preview="type {}" --preview-window=up:10 | sed 's/ *[0-9]* *//' )
-    else
-    fi
-    zle reset-prompt
-}
-zle -N _my_func 
-bindkey "^]" _my_func
-
-
 # fs [FUZZY PATTERN] - Select selected tmux session
 #   - Bypass fuzzy finder if there's only one match (--select-1)
 #   - Exit if there's no match (--exit-0)
-fs() {
+function fzf-tmux-session() {
   local session
   session=$(tmux list-sessions -F "#{session_name}" | \
     fzf --query="$1" --select-1 --exit-0) &&
@@ -97,7 +89,7 @@ fs() {
 }
 
 # fd - cd to selected directory
-fd() {
+function fzf-cd() {
   local dir
   dir=$(find ${1:-.} -path '*/\.*' -prune \
                   -o -type d -print 2> /dev/null | fzf +m) &&
@@ -105,23 +97,18 @@ fd() {
 }
 
 # fda - including hidden directories
-fda() {
+function fzf-ls-with-a() {
   local dir
   dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
 }
 
 
 # cdf - cd into the directory of the selected file
-cdf() {
+function fzf-cd-with-file() {
   local file
   local dir
   file=$(fzf +m -q "$1") && dir=$(dirname "$file") && cd "$dir"
 }
-
-remove_specified_history() {
-  echo "Delete $1 !"
-}
-
 
 exec-oneliner() {
   local oneliner_f
@@ -173,6 +160,17 @@ zle -N exec-oneliner
 bindkey '^x^x' exec-oneliner
 
 
+function fzf-ghq-look-from-list() {
+    local selected
+    selected="$(ghq list --full-path | sed 's/ /\\ /g' | fzf --prompt='[fzf-ghq-look]> ' --preview='cd {} && git log -1' --preview-window=up:6)"
+    if [ -n "$selected" ]; then
+        BUFFER="cd $selected"
+        CURSOR=$#BUFFER
+    fi
+    zle reset-prompt
+}
+
+
 # Default Options
 _gen_fzf_default_opts() {
   local base03="234"
@@ -192,30 +190,56 @@ _gen_fzf_default_opts() {
   local cyan="37"
   local green="64"
 
-  # Solarized Dark color scheme for fzf
-  export FZF_DEFAULT_OPTS="
-    --select-1
-    --exit-0
+  local FZF_DEFAULT_SEARCH_OPTS="
     --exact
-    --inline-info
-    --prompt='[fzf]> '
-    --color fg:-1,bg:-1,hl:$blue,fg+:$green,bg+:-1,hl+:$red
-    --color info:-1,prompt:-1,pointer:$green,marker:$base3,spinner:$yellow
+    --no-sort
+    --tac
+    "
+  local FZF_DEFAULT_INTERFACE_OPTS="
     --bind=alt-v:page-up
     --bind=ctrl-v:page-down
     --bind=ctrl-z:toggle-all
     --bind=ctrl-k:kill-line
-    --reverse
-    --border
-    --no-sort
-    --tac
-    --ansi
-    --select-1
-    --exit-0
     --bind=\"ctrl-x:execute(LC_ALL=C sed -i '' '/{}/d' $HISTFILE)\"
     --bind=\"ctrl-s:execute({2..})\"
-    --bind=\"ctrl-l:execute(vim hoge)\"
-  "
-    #--bind=\"ctrl-x:execute(LC_ALL=C sed -i '/{}/d' $HISTFILE)\"
+    --cycle
+    "
+  local FZF_DEFAULT_LAYOUT_OPTS="
+    --border
+    --inline-info
+    --prompt='[fzf]> '
+    --reverse
+    "
+  local FZF_DEFAULT_DISPLAY_OPTS="
+    --ansi
+    --color fg:-1,bg:-1,hl:$blue,fg+:$green,bg+:-1,hl+:$red
+    --color info:-1,prompt:-1,pointer:$green,marker:$base3,spinner:$yellow
+    --exit-0
+    --select-1
+    "
+  local FZF_DEFAULT_SCRIPTING_OPTS="
+    --exit-0
+    --select-1
+    "
+  export FZF_DEFAULT_OPTS="\
+    ${FZF_DEFAULT_SEARCH_OPTS} \
+    ${FZF_DEFAULT_INTERFACE_OPTS}  \
+    ${FZF_DEFAULT_LAYOUT_OPTS}  \
+    ${FZF_DEFAULT_DISPLAY_OPTS}  \
+    ${FZF_DEFAULT_SCRIPTING_OPTS}  \
+    "
 }
 _gen_fzf_default_opts
+
+
+_fzf-my_functions() {
+    if type "fzf" >/dev/null 2>&1; then
+        eval $(grep -E '^function\s+.+\(.*\)' ${HOME}/.zsh.d/* | awk '{print $2}' | sed -e 's/(.*)//' | \
+                   fzf --prompt="[fzf-my-functions]> " --preview="type {}" --preview-window=up:2)
+    else
+        echo "Command fzf not found."
+    fi
+    zle reset-prompt
+}
+zle -N _fzf-my_functions
+bindkey "^]" _fzf-my_functions

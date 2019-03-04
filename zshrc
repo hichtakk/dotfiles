@@ -18,6 +18,7 @@ path=(
     /sbin(N-/)
     ${HOME}/local/bin(N-/)
     ${HOME}/.pyenv(N-/)
+    ${HOME}/.cargo/bin(N-/)
 )
 
 # load config

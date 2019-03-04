@@ -10,6 +10,9 @@
 ; powerline custom theme
 (defun powerline-my-theme ()
   (interactive)
+  ; Separator color problem on MacOS
+  ; see http://emacsredux.com/blog/2014/01/11/a-peek-at-emacs-24-dot-4-srgb-colours-on-os-x/
+  (setq ns-use-srgb-colorspace nil)
   (setq-default mode-line-format
                 '("%e"
                   (:eval
@@ -68,7 +71,7 @@
                       :background "#4682B4"
                       :inherit 'mode-line)
   (set-face-attribute 'powerline-active2 nil
-                      :background "#5F5F5F"
+                      :background "#82A8D1"
                       :inherit 'mode-line)
 
   (set-face-attribute 'mode-line-inactive nil

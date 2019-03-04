@@ -1,24 +1,55 @@
-; ~/.emacs.d/init.el
-(setq debug-on-error t)
+; package.el
+; see http://wikemacs.org/wiki/Package.el
+(require 'package)
+(setq package-user-dir "~/.emacs.d/.elpa/")
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/") t)
+(package-initialize)
+(when noninteractive (package-refresh-contents))
 
-; load-path setting for cask
-(setq load-path
-  (append
-   (list "~/.cask" ; install from script
-         "/usr/local/share/emacs/site-lisp" ; install from homebrew
-         )
-   load-path))
+(package-install 'anzu)    ; minor mode which displays current and total matches information
+(package-install 'bind-key)
+(package-install 'diminish)
+(package-install 'direx)
+(package-install 'epc)
+(package-install 'erlang)
+(package-install 'exec-path-from-shell)
+(package-install 'expand-region)
+(package-install 'flycheck)
+(package-install 'git)
+(package-install 'git-gutter)
+(package-install 'go-mode)
+(package-install 'go-autocomplete)
+(package-install 'helm)
+(package-install 'helm-descbinds)
+(package-install 'ido-vertical-mode)
+(package-install 'init-loader)
+(package-install 'jedi)
+(package-install 'jedi-direx)
+(package-install 'markdown-mode)
+(package-install 'multi-term)
+(package-install 'open-junk-file)
+(package-install 'popwin)
+(package-install 'powerline)
+(package-install 'py-autopep8)
+(package-install 'python)
+(package-install 'python-environment)
+(package-install 'recentf-ext)
+(package-install 'racer)
+(package-install 'rust-mode)
+(package-install 'smex)
+(package-install 'terraform-mode)
+(package-install 'use-package)
+(package-install 'virtualenvwrapper)
+(package-install 'yaml-mode)
+(package-install 'zenburn-theme)
 
-; Package management tool
-; see https://github.com/cask/cask
-(require 'cask)
-(cask-initialize)
 
 ; use-package
 ; see https://github.com/jwiegley/use-package
 ;     http://qiita.com/kai2nenobu/items/5dfae3767514584f5220
 (unless (require 'use-package nil t)
   (defmacro use-package (&rest args)))
+
 
 ; init-loader
 ; see https://github.com/emacs-jp/init-loader
