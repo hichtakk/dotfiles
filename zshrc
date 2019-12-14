@@ -18,6 +18,7 @@ path=(
     /sbin(N-/)
     ${HOME}/local/bin(N-/)
     ${HOME}/.pyenv(N-/)
+    ${HOME}/go/bin(N-/)
     ${HOME}/.cargo/bin(N-/)
 )
 

@@ -21,5 +21,4 @@ smudge = git-lfs smudge %f
 required = true
 
 [ghq]
-root = ~/src
-root = ~/.golang.d
+root = ~/go

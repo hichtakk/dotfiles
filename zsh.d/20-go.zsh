@@ -1,2 +1,2 @@
 ## Golang
-export GOPATH=${HOME}/.golang.d
+export GOPATH=${HOME}/go
