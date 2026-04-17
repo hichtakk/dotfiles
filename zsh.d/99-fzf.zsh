@@ -6,7 +6,7 @@
 # fh - repeat history
 function fzf-history() {
   title='fzf-history'
-  BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -l 1 || history) | fzf +s --tac --prompt="[${title}]> " | sed 's/ *[0-9]* *//')
+  BUFFER=$( ([ -n "$ZSH_NAME" ] && fc -li 1 || history) | fzf +s --tac --prompt="[${title}]> " | sed 's/^[[:space:]]*[0-9]*[[:space:]]*[0-9-]*[[:space:]]*[0-9:]*[[:space:]]*//')
   CURSOR=$#BUFFER
   zle reset-prompt
 }
